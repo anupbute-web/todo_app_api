@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head') %>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <form class="container" action="/add" method="POST">
+      <h1>Todo</h1>
+      <input type="text" name="title" placeholder="New task" required>
+      <select name="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <ul class="container">
+      <h2>Tasks</h2>
+      <% todos.forEach(todo=> { %>
+        <li>
+          <%= todo.title %> - <%= todo.priority %>
+          <form action="/delete/<%= todo._id %>" method="POST" style="display:inline;">
+                <a class="edit" href="/edit/<%= todo._id %>">Edit</a>
+                <button type="submit">Delete</button>
+              </form>
+        </li>
+        <% }) %>
+    </ul>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
