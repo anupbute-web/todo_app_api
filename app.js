@@ -11,7 +11,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
 app.get('/', async (req, res) => {
   const todos = await Todo.find();
   console.log(__dirname+"\\public")
