@@ -3,7 +3,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const Todo = require('./models/Todo');
 const app = express();
-const port = process.env.PORT || 3000;
+const port =3000;
 
 connectDB();
 
@@ -42,5 +42,5 @@ app.post('/delete/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running`);
 });
