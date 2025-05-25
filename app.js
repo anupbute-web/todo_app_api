@@ -3,7 +3,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const Todo = require('./models/Todo');
 const app = express();
-const port =3000;
+const port =4040;
 
 connectDB();
 
@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
   const todos = await Todo.find();
-  console.log(__dirname+"\\public")
   res.render('index', { todos });
 });
 
@@ -23,8 +22,8 @@ app.post('/add', async (req, res) => {
     await Todo.create({ title, priority });
   }
   res.redirect('/');
-});
-
+});  
+ 
 app.get('/edit/:id', async (req, res) => {
   const todo = await Todo.findById(req.params.id);
   res.render('edit', { todo });

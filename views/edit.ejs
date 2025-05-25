@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <%- include('partials/head') %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/head') %>
+
 </head>
+
 <body>
-  <%- include('partials/header') %>
 
-  <form class="container" action="/edit/<%= todo._id %>" method="POST">
-    <h2>Edit Task</h2> 
-    <input type="text" name="title" value="<%= todo.title %>" required>
-    <select name="priority">
-      <option value="High" <%= todo.priority === 'High' ? 'selected' : '' %>>High</option>
-      <option value="Medium" <%= todo.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
-      <option value="Low" <%= todo.priority === 'Low' ? 'selected' : '' %>>Low</option>
-    </select>
-    <button type="submit">Update Task</button>
-  </form>
-
-  <%- include('partials/footer') %>
+    <form action="/edit/<%= todo._id %>" method="POST" class="add_task">
+        <h1>Edit Task</h1>
+        <input type="text" class="add" name="title" value="<%= todo.title %>" required placeholder="New Task">
+        <select class="add" name="priority">
+            <option value="High" <%=todo.priority==='High' ? 'selected' : '' %>>High</option>
+            <option value="Medium" <%=todo.priority==='Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="Low" <%=todo.priority==='Low' ? 'selected' : '' %>>Low</option>
+        </select>
+        <input style="background-color:#218838; color: white;" type="submit" class="add" value="Update Task">
+    </form>
 </body>
+
 </html>

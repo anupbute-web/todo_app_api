@@ -2,37 +2,39 @@
 <html lang="en">
 
 <head>
-  <%- include('partials/head') %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/head') %>
 </head>
 
 <body>
-  <%- include('partials/header') %>
-
-    <form class="container" action="/add" method="POST">
-      <h1>Todo</h1>
-      <input type="text" name="title" placeholder="New task" required>
-      <select name="priority">
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
-      <button type="submit">Add Task</button>
-    </form>
-
-    <ul class="container">
-      <h2>Tasks</h2>
+  <form class="add_task" action="/add" method="POST">
+    <h1>Todo</h1>
+    <input type="text" name="title" class="add" placeholder="New Task" required>
+    <select name="priority" class="add">
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <input style="background-color:#218838; color: white;" type="submit" class="add" value="Add Task">
+  </form>
+  <div class="view_task">
+    <h2>Tasks</h2>
+    <ul>
       <% todos.forEach(todo=> { %>
-        <li>
-          <%= todo.title %> - <%= todo.priority %>
-          <form action="/delete/<%= todo._id %>" method="POST" style="display:inline;">
-                <a class="edit" href="/edit/<%= todo._id %>">Edit</a>
-                <button type="submit">Delete</button>
+        <li class="all_li">
+          <span class="li_form">
+            <%= todo.title %> - <%= todo.priority %>
+          </span>
+              <form action="/delete/<%= todo._id %>" method="POST">
+                <a class="btn_blue" href="/edit/<%= todo._id %>">Edit</a>
+                <button class="btn_red" type="submit">Delete</button>
               </form>
+              <% }) %>
         </li>
-        <% }) %>
-    </ul>
 
-    <%- include('partials/footer') %>
+
+    </ul>
+  </div>
 </body>
 
 </html>

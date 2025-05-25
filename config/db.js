@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-let MONGODB_URI="mongodb+srv://anupbute015370:IeCKIRH4rTI0oJm1@new-todo.mpse5wy.mongodb.net/";
+let MONGODB_URI="mongodb+srv://anupbute:anupbute1@secrets.2pflmb5.mongodb.net/?retryWrites=true&w=majority&appName=secrets";
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGODB_URI);
     console.log('MongoDB connected');
   } catch (err) {
     console.error(err.message);
@@ -14,3 +11,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+ 
