@@ -36,5 +36,5 @@ Live Demo: [https://todo-app-api-tmgh.onrender.com/](https://todo-app-api-tmgh.o
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/anupbute-web/todo-app.git
+   git clone https://github.com/anupbute-web/todo_app_api.git
    cd todo-app
