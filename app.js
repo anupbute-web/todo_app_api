@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const methodOverride = require('method-override');
 const connectDB = require('./config/db');
 const Todo = require('./models/Todo');
 const app = express();
@@ -10,6 +11,7 @@ connectDB();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.get('/', async (req, res) => {
   const todos = await Todo.find();
@@ -29,17 +31,15 @@ app.get('/edit/:id', async (req, res) => {
   res.render('edit', { todo });
 });
 
-app.post('/edit/:id', async (req, res) => {
+app.put('/edit/:id', async (req, res) => {
   const { title, priority } = req.body;
   await Todo.findByIdAndUpdate(req.params.id, { title, priority });
   res.redirect('/');
 });
-
-app.post('/delete/:id', async (req, res) => {
+app.delete('/delete/:id', async (req, res) => {
   await Todo.findByIdAndDelete(req.params.id);
   res.redirect('/');
 });
-
 app.listen(port, () => {
   console.log(`Server running`);
 });

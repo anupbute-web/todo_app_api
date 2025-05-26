@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('partials/head') %>
+  <%- include('partials/head') %>
 </head>
 
 <body>
@@ -25,11 +25,11 @@
           <span class="li_form">
             <%= todo.title %> - <%= todo.priority %>
           </span>
-              <form action="/delete/<%= todo._id %>" method="POST">
-                <a class="btn_blue" href="/edit/<%= todo._id %>">Edit</a>
-                <button class="btn_red" type="submit">Delete</button>
-              </form>
-              <% }) %>
+          <form action="/delete/<%= todo._id %>?_method=DELETE" method="POST">
+  <a class="btn_blue" href="/edit/<%= todo._id %>">Edit</a>
+  <button class="btn_red" type="submit">Delete</button>
+</form>
+          <% }) %>
         </li>
 
 
